@@ -1,0 +1,215 @@
+package bankmanagement;
+import java.util.Scanner;
+
+class bankinfo{
+  
+   private int wrongpass = 0;
+   private int amount;
+   private String password;
+   Scanner cse = new Scanner (System.in);
+   
+   public void createAccount(String mehedi){
+{
+            if(password==null){
+            password = mehedi;
+            
+                System.out.println("Successfully Created Your account\n\n");
+                System.out.println("* Press 1 for Check Balance");
+                int ck = cse.nextInt();
+                switch (ck) {
+                    case 1:
+                        cheackBalance();
+                        break;
+                    default:
+                        System.out.println("Thank You for Banking with us 🙂");
+                        break;
+                }
+            }
+            else {
+                     System.out.println("Sorry! You already set your password");
+         }
+   
+    }
+      
+       
+}
+   public void Deposit(){
+  {
+            System.out.print("Enter Deposit Amount: ");
+            int mehedi = cse.nextInt();
+            amount+=mehedi;
+       
+            System.out.println("Successfully Deposit Money\n\n");
+            System.out.println("* Press 1 for Check Balance");
+
+            int ck = cse.nextInt();
+           switch (ck){
+               case 1:
+                   cheackBalance();
+                   break;
+               default:
+                   System.out.println("Thank You for Banking with us 🙂");
+                   break;
+           }
+                
+    }
+       
+}
+   public void cheackBalance(){
+   {
+           if(wrongpass==3){
+                System.out.println("Account Blocked!!!");
+                System.out.println("Please Contuct Our Customer Manger For Active Your Accoount");
+           
+            }
+            else{
+                 System.out.print("Enter Your Password: ");
+                 cse.nextLine();
+                     String pas = cse.nextLine();
+                if(pas.equals(password)){
+                     System.out.println("Your Current Balance is: "+amount);
+                     System.out.println("* Press 1 for Check Balance");
+                   
+                     
+                     int ck = cse.nextInt();
+                     switch (ck) {
+                         case 1:
+                             cheackBalance();
+                             break;
+                         default:
+                             System.out.println("Thank You for Banking with us 🙂");
+                             break;
+                     }
+             }
+            else{
+                ++wrongpass;
+                 int reza=3-wrongpass;
+                 
+                 if(reza==0){
+                     System.out.println("\n\n\nYour Account has been disabled.");
+                     System.out.println("Please Contuct Our Customer Manger For Active Your Accoount\n\n\n");
+                }
+                 else{
+                     System.out.println("Inavalid Password."+reza+" Chances is Avaiable\n\n");
+                     System.out.println("* Press 1 for Check Balance");
+                  
+                    
+                     int ck = cse.nextInt();
+                    switch (ck) {
+                        case 1:
+                            cheackBalance();
+                            break;
+                        default:
+                            System.out.println("Thank You for Banking with us 🙂");
+                            break;
+                    }
+           }
+           
+       }
+    }
+ }
+       
+}
+   
+   public void withdrawAmount(){
+       {
+            if(wrongpass==3){
+                System.out.println("Account Blocked!!!");
+                System.out.println("Please Contuct Our Customer Manger For Active Your Accoount");
+             }
+            else{
+               System.out.print("Enter Amount: ");
+               int taka = cse.nextInt();
+               cse.nextLine();
+               System.out.print("Enter Password: ");
+               String pas = cse.nextLine();
+             
+               if(taka>amount){
+                    System.out.println("\n\nYou Have less amount of "+taka+" Taka");
+                    System.out.println("Your Current Balance is: "+amount);
+                    System.out.println("* Press 1 for Check Balance");
+                    
+                    int ck = cse.nextInt();
+            
+                   switch (ck) {
+                       case 1:
+                           cheackBalance();
+                           break;
+                       default:
+                           System.out.println("Thank You for Banking with us 🙂");
+                           break;
+                   }
+             }
+            else if (taka == 0 ){
+                    System.out.println("Please Input Valid Amount 😕 ");
+                    System.out.println("* Press 1 for Check Balance");
+                    
+                    int ck = cse.nextInt();
+            
+                   switch (ck) {
+                       case 1:
+                           cheackBalance();
+                           break;
+                       default:
+                           System.out.println("Thank You for Banking with us 🙂");
+                           break;
+                   }
+            }
+             else{
+                 if(pas.equals(password)){
+                        amount -= taka;
+                        System.out.println("Success!!!");
+                        System.out.println("Your New Balance is: "+amount);
+                        System.out.println("* Press 1 for Check Balance");
+                        
+            
+                        int ck = cse.nextInt();
+                     switch (ck){
+                         case 1:
+                             cheackBalance();
+                             break;
+                         default:
+                             System.out.println("Thank You for Banking with us 🙂");
+                             break;
+                     }
+                }
+                else{
+                    ++wrongpass;
+                    int reza=3-wrongpass;
+                    if(reza==0){
+                        System.out.println("\n\n\nAccount Blocked!!!");
+                        System.out.println("Please Contuct Our Customer Manger For Active Your Accoount\n\n\n");
+                    }
+                    else{
+                        System.out.println("Inavalid Password."+reza+" Chances is Avaiable\n\n");
+                        System.out.println("* Press 1 for Check Balance");
+                        
+           
+                        int ck = cse.nextInt();
+                        switch (ck) {
+                            case 1:
+                                cheackBalance();
+                                break;
+                            default:
+                                System.out.println("Thank You for Banking with us 🙂");
+                                break;
+                        }
+                   }
+                }
+              }
+           }
+       } 
+ }
+       
+}
+public class Bankmanagement {
+    public static void main(String[] args) {
+        Scanner cse = new Scanner (System.in);
+        bankinfo mehedi = new bankinfo();
+        System.out.print("Input New password: ");
+        String pass = cse.nextLine();
+        mehedi.createAccount(pass); 
+    }
+}
+Chat Conversation End
+Type a message...
